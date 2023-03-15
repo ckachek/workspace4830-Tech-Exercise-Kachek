@@ -1,0 +1,62 @@
+<html>
+<head>
+<style>
+header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;	 
+}
+nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;	      
+}
+section {
+    width:350px;
+    float:left;
+    padding:10px;	 	 
+}
+footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;	 	 
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1> Insert Data </h1>
+</header>
+
+<nav>
+<a href="/webproject-tech-exercise-kachek/search_kachek.html">Search Item</a> <br>
+</nav>
+
+<section>
+	<h1>User Input</h1>
+	<p>Required: Enter a name for the task and a priority from 1-9.</p>
+	
+	<form action="InsertKachek" method="POST">
+	
+		Task: <input type="text" name="task"> <br />
+		Due Date: <input type="text" name="due"> <br />
+		Priority: <input type="text" name="priority"> <br />
+		Notes: <input type="text" name="notes"> <br />
+		
+		<input type="submit" value="Submit" />
+	</form>
+
+</section>
+
+<footer>
+Copyright
+</footer>
+</body>
+</html>

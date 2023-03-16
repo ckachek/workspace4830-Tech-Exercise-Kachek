@@ -10,31 +10,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InsertKachek")
-public class InsertKachek extends HttpServlet {
+@WebServlet("/DeleteKachek")
+public class DeleteKachek extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
-   public InsertKachek() {
+   public DeleteKachek() {
       super();
    }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String task = request.getParameter("task");
-      String due = request.getParameter("due");
-      String priority = request.getParameter("priority");
-      String notes = request.getParameter("notes");
+      String id = request.getParameter("id");
 
       Connection connection = null;
-      String insertSql = " INSERT INTO test (id, TASK, DUE, PRIORITY, NOTES) values (default, ?, ?, ?, ?)";
+      String deleteSql = "DELETE FROM test WHERE id=?";
 
       try {
          DBConnectionKachek.getDBConnection(getServletContext());
          connection = DBConnectionKachek.connection;
-         PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
-         preparedStmt.setString(1, task);
-         preparedStmt.setString(2, due);
-         preparedStmt.setString(3, priority);
-         preparedStmt.setString(4, notes);
+         PreparedStatement preparedStmt = connection.prepareStatement(deleteSql);
+         preparedStmt.setString(1, id);
          preparedStmt.execute();
          connection.close();
       } catch (Exception e) {
@@ -44,7 +38,7 @@ public class InsertKachek extends HttpServlet {
       // Set response content type
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
-      String title = "Insert Data to DB table";
+      String title = "Item Deleted";
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
       out.println(docType + //
             "<html>\n" + //
@@ -52,15 +46,10 @@ public class InsertKachek extends HttpServlet {
             "<body bgcolor=\"#f0f0f0\">\n" + //
             "<h2 align=\"center\">" + title + "</h2>\n" + //
             "<ul>\n" + //
-
-            "  <li><b>Task</b>: " + task + "\n" + //
-            "  <li><b>Due Date</b>: " + due + "\n" + //
-            "  <li><b>Priority</b>: " + priority + "\n" + //
-            "  <li><b>Notes</b>: " + notes + "\n" + //
-
+            
             "</ul>\n");
 
-      out.println("<a href=/webproject-tech-exercise-kachek/insert_kachek.html>Return</a> <br>");
+      out.println("<a href=/webproject-tech-exercise-kachek/delete_kachek.html>Return</a> <br>");
       out.println("</body></html>");
    }
 

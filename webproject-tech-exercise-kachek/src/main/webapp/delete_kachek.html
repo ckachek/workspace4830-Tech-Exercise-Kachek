@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -32,25 +33,23 @@ footer {
 
 <body>
 <header>
-<h1> Search Data </h1>
+<h1> Remove Data </h1>
 </header>
 
 <nav>
 <a href="/webproject-tech-exercise-kachek/insert_kachek.html">Insert Item</a> <br>
-<a href="/webproject-tech-exercise-kachek/delete_kachek.html">Remove Item</a> <br>
+<a href="/webproject-tech-exercise-kachek/search_kachek.html">Search Item</a> <br>
 </nav>
 
 <section>
 	<h1>User Input</h1>
-	<p>Enter any value to find a specific task. Leave blank to display all tasks.</p>
+	<p>Enter the ID number of a task to remove it from the list.</p>
 	
-	<form action="SearchKachek" method="POST">
+	<form action="DeleteKachek" method="POST">
 	
-		Task: <input type="text" name="keyword"> <br />
-		Due Date: <input type="text" name="keyword2"> <br />
-		Priority: <input type="text" name="keyword3"> <br />
+		ID number: <input type="text" name="id"> <br />
 		
-		<input type="submit" value="Search" />
+		<input type="submit" value="Submit" />
 	</form>
 
 </section>

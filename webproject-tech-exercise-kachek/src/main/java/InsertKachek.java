@@ -31,8 +31,14 @@ public class InsertKachek extends HttpServlet {
          DBConnectionKachek.getDBConnection(getServletContext());
          connection = DBConnectionKachek.connection;
          PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+         if (task.isEmpty()) {
+        	 task = "Task";
+         }
          preparedStmt.setString(1, task);
          preparedStmt.setString(2, due);
+         if (priority.isEmpty()) {
+        	 priority = "1";
+         }
          preparedStmt.setString(3, priority);
          preparedStmt.setString(4, notes);
          preparedStmt.execute();
